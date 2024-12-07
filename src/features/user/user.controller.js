@@ -29,7 +29,7 @@ export default class UserController{
 
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' });
 
-            res.cookie('token',token, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000});
+            res.cookie('token',token, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: 'none'});
 
             res.status(201).send({
                 name: user.name,
@@ -60,7 +60,7 @@ export default class UserController{
 
             const token = jwt.sign({ id: userExists.id }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' });
 
-            res.cookie('token',token, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000});
+            res.cookie('token',token, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: 'none'});
             
             res.status(200).send({
                 name: userExists.name,
