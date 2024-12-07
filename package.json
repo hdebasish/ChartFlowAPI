@@ -2,7 +2,7 @@
   "name": "chart-flow-api",
   "version": "1.0.0",
   "description": "Interactive Data Visualization Dashboard",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
