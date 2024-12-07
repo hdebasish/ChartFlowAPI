@@ -61,7 +61,12 @@ export default class DashboardController {
 
     async logout(req, res, next) {
         try {
-            res.clearCookie('token');
+            res.cookie('token', '', {
+                httpOnly: true,
+                secure: true, 
+                sameSite: 'none',  
+                expires: new Date(0), 
+            });
             res.send('Logged out');
         } catch (error) {
             throw Error("Error logging out");
