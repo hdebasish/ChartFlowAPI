@@ -2,11 +2,11 @@
   "name": "chart-flow-api",
   "version": "1.0.0",
   "description": "Interactive Data Visualization Dashboard",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon node server.js"
   },
   "author": "Debasish Halder",
   "license": "ISC",
