@@ -1,0 +1,71 @@
+Bar Graph
+
+[
+    {
+        "$match": {
+            "Age": "15-25",  
+            "Gender": "Female",  
+            "Day": {
+                "$gte": ISODate("2022-10-01T00:00:00.000Z"),
+                "$lte": ISODate("2022-10-05T00:00:00.000Z")
+            }
+        }
+    },
+    {
+        "$group": {
+            "_id": null,
+            "totalA": { "$sum": "$A" },
+            "totalB": { "$sum": "$B" },
+            "totalC": { "$sum": "$C" },
+            "totalD": { "$sum": "$D" },
+            "totalE": { "$sum": "$E" },
+            "totalF": { "$sum": "$F" }
+        }
+    },
+    {
+        "$project": {
+            "_id": 0,
+            "totalA": 1,
+            "totalB": 1,
+            "totalC": 1,
+            "totalD": 1,
+            "totalE": 1,
+            "totalF": 1
+        }
+    }
+]
+
+
+Line Graph
+
+
+[
+    {
+        "$match": {
+            "Age": "15-25",  
+            "Gender": "Female",  
+            "Day": {
+                "$gte": ISODate("2022-10-01T00:00:00.000Z"),
+                "$lte": ISODate("2022-10-05T00:00:00.000Z")
+            }
+        }
+    },
+    {
+        "$group": {
+            "_id": null,
+            "listA": "listC": { "$push": { "A": "$A", "Day": "$Day" } },
+        }
+    },
+    {
+        "$project": {
+            "_id": 0,
+            "listA": 1,
+        }
+    },
+    {
+        "$unwind": "$listA"
+    },
+    {
+        $replaceRoot: { newRoot: "$listA" }
+    }
+]
