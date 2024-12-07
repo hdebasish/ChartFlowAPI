@@ -6,11 +6,15 @@ import cookieParser from "cookie-parser";
 import userRouter from "./src/features/user/user.routes.js";
 import dashboardRouter from "./src/features/dashboard/dashboard.routes.js"
 import jwtAuth from "./src/middleware/jwt.middleware.js";
+import connectUsingMongoose from "./src/config/mongoose.config.js"
 
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'https://chatflow-production.up.railway.app',
+  methods: 'GET,POST,PUT,DELETE',
   credentials:true, 
   optionSuccessStatus:200
 }
@@ -37,4 +41,8 @@ app.use((req, res) => {
   res.status(404).send("404 Not Found!");
 });
 
-export default app;
+
+app.listen(port, function () {
+  connectUsingMongoose();
+  console.log(`Server is running on port ${port}`);
+});
