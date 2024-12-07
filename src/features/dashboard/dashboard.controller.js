@@ -47,8 +47,6 @@ export default class DashboardController {
             const gender = req.query.gender;
             const category = req.query.category;
 
-            console.log("Trend: ",startDate, endDate, age, gender, category)
-
             const trendData = await this.dashboardRepository.getTrendData(startDate, endDate, age, gender, category);
 
             if (!trendData) {
