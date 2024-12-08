@@ -41,7 +41,7 @@ Registers a new user.
 ```
 
 ### 3. User Info
-Registers a new user.  
+Get signed in user information.  
 **URL**: `/api/dashboard/`  
 **Method**: `POST`  
 **Payload**:  
