@@ -29,6 +29,10 @@ app.use("/api/users", userRouter);
 
 app.use("/api/dashboard", jwtAuth, dashboardRouter);
 
+app.use("/", (req, res, next) => {
+  res.send("Welcome to the ChatFlow API");
+});
+
 app.use((err, req, res, next) => {
   console.log(err);
 
